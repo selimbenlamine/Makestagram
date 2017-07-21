@@ -39,7 +39,8 @@ class CreateUsernameViewController: UIViewController {
                 // handle newly created user here
             })
         }
-    }    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

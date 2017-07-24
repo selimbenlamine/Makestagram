@@ -28,18 +28,18 @@ class LoginViewController: UIViewController {
         let authViewController = authUI.authViewController()
         present(authViewController, animated: true)
     }
-
     
-   
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-// override func didReceiveMemoryWarning() {
+    // override func didReceiveMemoryWarning() {
     //   super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // Dispose of any resources that can be recreated.
     //}
     
 }
@@ -58,12 +58,34 @@ extension LoginViewController: FUIAuthDelegate {
         // 2
         let userRef = Database.database().reference().child("users").child(user.uid)
         
+        UserService.show(forUID: user.uid) { (user) in
+            if let user = user {
+                // handle existing user
+                User.setCurrent(user)
+                
+                let initialViewController = UIStoryboard.initialViewController(for: .main)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
+                
+            } else {
+                // handle new user
+                self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
+            }
+        }
+    
         // 3
+        
         userRef.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
             if let user = User(snapshot: snapshot) {
-                print("Welcome back, \(user.username).")
+                User.setCurrent(user)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                if let initialViewController = storyboard.instantiateInitialViewController() {
+                    self.view.window?.rootViewController = initialViewController
+                }
             } else {
-                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
+                // 1
+                self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
             }
         })
     }

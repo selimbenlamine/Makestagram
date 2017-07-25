@@ -24,20 +24,20 @@ class CreateUsernameViewController: UIViewController {
             print("Created new user: \(user.username)")
             
             UserService.create(firUser, username: username) { (user) in
-                guard let _ = user else {
+                guard let user = user else {
+                    // handle error
                     return
                 }
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                User.setCurrent(user, writeToUserDefaults: true)
                 
-                if let initialViewController = storyboard.instantiateInitialViewController() {
-                    self.view.window?.rootViewController = initialViewController
-                    self.view.window?.makeKeyAndVisible()
-                }
+                let initialViewController = UIStoryboard.initialViewController(for: .main)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

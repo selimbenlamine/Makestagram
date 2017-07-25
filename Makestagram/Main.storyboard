@@ -22,7 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_find_friends_black.png" id="SCr-Su-PY3"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="tab_find_friends_black.png" id="SCr-Su-PY3">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbi-DN-ily" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +43,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_plus_black.png" id="gGs-jx-gCj"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="tab_plus_black.png" id="gGs-jx-gCj">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDW-xi-nUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,16 +64,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_home_black.png" id="ZLQ-9L-e8I"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_home_black.png" id="ZLQ-9L-e8I">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c92-j1-yra" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-324" y="-911"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="1pO-67-4Dq">
             <objects>
-                <tabBarController id="jwb-tC-Gku" sceneMemberID="viewController">
+                <tabBarController id="jwb-tC-Gku" customClass="MainTabBarController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Xfk-E4-0rv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
